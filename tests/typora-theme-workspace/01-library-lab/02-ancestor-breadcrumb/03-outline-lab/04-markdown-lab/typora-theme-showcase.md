@@ -222,11 +222,11 @@ $$
 
 下面三张图分别用来确认浅色、深色与 sidenote 相关截图在当前主题中的尺寸、圆角与排版节奏是否稳定。
 
-![Light Theme Preview](https://raw.githubusercontent.com/lr00rl/Typora_Claude-Like_Theme/master/image/light.png)
+![Light Theme Preview](https://raw.githubusercontent.com/lr00rl/typora-claude-like-theme/main/image/light.png)
 
-![Dark Theme Preview](https://raw.githubusercontent.com/lr00rl/Typora_Claude-Like_Theme/master/image/dark.png)
+![Dark Theme Preview](https://raw.githubusercontent.com/lr00rl/typora-claude-like-theme/main/image/dark.png)
 
-![Sidenote Preview](https://raw.githubusercontent.com/lr00rl/Typora_Claude-Like_Theme/master/image/sidenote-example-wide.png)
+![Sidenote Preview](https://raw.githubusercontent.com/lr00rl/typora-claude-like-theme/main/image/sidenote-example-wide.png)
 
 更多信息可以查看 [Typora 官方网站](https://typora.io/) 或仓库里的 `README.md` / `README_en.md`。
 

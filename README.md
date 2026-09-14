@@ -1,6 +1,6 @@
 # Claude-Like Theme
 
-[English README](README_en.md)
+[English README](README_en.md) · 孪生项目 [typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite)：负责安装和同步本主题，并提供主题所配合的旁注、写作宽度、代码块增强等编辑器能力，详见[与 typora-plugin-lite 配合](#与-typora-plugin-lite-配合)。
 
 ![Light Preview](image/light.png)
 
@@ -49,6 +49,17 @@
    - `Claude-like Dark`
 
 > Windows 推荐将 `偏好设置 -> 外观 -> 窗口样式` 设为 `一体化`，重启后生效。当前主题在 Windows 一体化模式下更稳定。
+
+## 与 typora-plugin-lite 配合
+
+[typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite) 是和本主题一起维护的 Typora 插件系统。主题管视觉，插件管编辑器里的行为，两边通过 class 和 CSS 变量对接，互不修改对方的实现。
+
+| 插件 | 和主题的关系 |
+| --- | --- |
+| [`theme-pack`](https://github.com/lr00rl/typora-plugin-lite#theme-pack) | 安装时把两个 CSS 写进 Typora 主题目录，之后启动时按 `theme-pack.json` 从本仓库同步，不会替你切换当前主题 |
+| [`sidenote`](https://github.com/lr00rl/typora-plugin-lite/blob/main/plugins/sidenote/README.md) | 识别编辑器里的 `<span class="sidenote">` 并加上主题可用的 class，主题读取 `--tpl-sidenote-*` 变量排布右侧旁注 |
+| [`wider`](https://github.com/lr00rl/typora-plugin-lite/blob/main/plugins/wider/README.md) | 负责 `#write` 的 Default / Wide / Full 宽度；没装插件时主题退回 860px 正文宽度 |
+| [`fence-enhance`](https://github.com/lr00rl/typora-plugin-lite/tree/main/plugins/fence-enhance) | 代码块即时渲染和复制按钮，并写入 `--tpl-lineno-digits`，主题据此调整行号栏宽度 |
 
 ## 设计重点
 
@@ -138,3 +149,7 @@
 ## 总结
 
 如果你想要的不是“网页截图风”的 Typora 主题，而是一套更安静、可信、适合长期阅读与写作的中文 Markdown 主题，这个主题会更合适。它现在已经把文件树、大纲提示线、深层 sticky、代码块、表格和 sidenote 这些实际使用频率很高的部分一起收拢到了同一套视觉逻辑里。
+
+## 来源与许可
+
+本主题最初 fork 自 [Muyiiiii/Typora_Claude-Like_Theme](https://github.com/Muyiiiii/Typora_Claude-Like_Theme)，之后在文件树、大纲、sidenote、构建流程和插件联动上做了大量重写，现在作为独立仓库维护。项目沿用 MIT 许可，原作者的版权声明保留在 [LICENSE](LICENSE) 中。

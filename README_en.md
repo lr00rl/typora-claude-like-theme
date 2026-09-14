@@ -1,6 +1,6 @@
 # Claude-Like Theme
 
-[中文说明](README.md)
+[中文说明](README.md) · Twin project [typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite): installs and syncs this theme, and provides the editor-side sidenotes, writing widths, and code fence features the theme is built to style. See [Working with typora-plugin-lite](#working-with-typora-plugin-lite).
 
 ![Light Preview](image/light.png)
 
@@ -49,6 +49,17 @@ Install [typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite). The 
    - `Claude-like Dark`
 
 > On Windows, `Preferences -> Appearance -> Window Style -> Unibody` is recommended. The theme is tuned for that mode.
+
+## Working with typora-plugin-lite
+
+[typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite) is the Typora plugin system maintained alongside this theme. The theme owns appearance and the plugins own editor behavior. They meet at class names and CSS variables, and neither changes the other's implementation.
+
+| Plugin | Relationship to the theme |
+| --- | --- |
+| [`theme-pack`](https://github.com/lr00rl/typora-plugin-lite#theme-pack) | The installer writes both CSS files into Typora's theme folder, and on startup the plugin syncs them from this repo through `theme-pack.json`. It never switches your current theme. |
+| [`sidenote`](https://github.com/lr00rl/typora-plugin-lite/blob/main/plugins/sidenote/README.md) | Detects `<span class="sidenote">` in the editor and adds CSS-targetable classes. The theme lays out margin notes from the `--tpl-sidenote-*` variables. |
+| [`wider`](https://github.com/lr00rl/typora-plugin-lite/blob/main/plugins/wider/README.md) | Owns the Default / Wide / Full width of `#write`. Without the plugin the theme falls back to an 860px body. |
+| [`fence-enhance`](https://github.com/lr00rl/typora-plugin-lite/tree/main/plugins/fence-enhance) | Eager fence rendering and copy buttons, plus `--tpl-lineno-digits`, which the theme uses to size the line-number gutter. |
 
 ## Design Priorities
 
@@ -138,3 +149,7 @@ Recommended test flow:
 ## Summary
 
 If you want a Typora theme that feels calm, deliberate, and trustworthy rather than flashy, this one is built for that use case. The recent work has pushed the theme beyond article styling into the surrounding Typora UI as well, especially the file tree, outline connector lines, deep sticky behavior, and sidenote support.
+
+## Origin and license
+
+This theme started as a fork of [Muyiiiii/Typora_Claude-Like_Theme](https://github.com/Muyiiiii/Typora_Claude-Like_Theme). After substantial rework of the file tree, outline, sidenotes, build pipeline, and plugin integration, it is now maintained as an independent repository. It stays under the MIT License, and the original author's copyright notice is kept in [LICENSE](LICENSE).
