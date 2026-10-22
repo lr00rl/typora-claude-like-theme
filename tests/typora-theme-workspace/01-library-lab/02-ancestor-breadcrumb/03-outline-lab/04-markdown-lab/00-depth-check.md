@@ -1,3 +1,3 @@
 # Depth Check
 
-当前演示工作区专门把主测试文件放到了第 10 层目录深度，用来覆盖 sticky depth support 的场景。
+The theme keeps ancestor folders sticky up to 10 levels deep. This workspace nests the showcase file four folders below the root, which is enough to see the sticky stack build up.

@@ -1,3 +1,3 @@
 # Sidebar Check
 
-这个文件用于给文件树提供同级节点，方便观察树形连接线、最后一个子节点的圆角拐点，以及活动文件旁边的分支结构。
+This file gives the file tree a sibling node, so you can see the tree connector lines, the rounded corner on the last child, and the branch next to the active file.

@@ -1,3 +1,3 @@
 # Ancestor Breadcrumb Check
 
-打开更深层的主测试文件后，向下滚动左侧文件树，可以看到祖先目录逐层吸附在顶部。
+After you open the deep showcase file, scroll the file tree down and watch each ancestor folder stick to the top in turn.

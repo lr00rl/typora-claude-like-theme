@@ -1,3 +1,3 @@
 # Code Check
 
-主测试文件里包含多段代码块。若要验证行号样式，请在 Typora 中开启代码块行号显示。
+The showcase file has several code blocks. To check the line-number style, turn on line numbers for code blocks in Typora.

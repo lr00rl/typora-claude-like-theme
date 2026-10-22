@@ -1,3 +1,3 @@
 # Tree Line Tail
 
-这一级尾部文件用于观察树线在当前活跃分支之后继续向下时的视觉表现。
+A tail file at this level, to check how the tree line looks when it continues past the active branch.

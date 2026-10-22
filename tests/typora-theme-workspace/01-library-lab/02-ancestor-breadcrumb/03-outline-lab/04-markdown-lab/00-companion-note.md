@@ -1,3 +1,3 @@
 # Companion Note
 
-这是主测试文件的同级文件，用来让最后一层目录也有多个兄弟节点，方便观察连接线的收尾样式。
+This file sits next to the showcase file, so the deepest folder has several siblings and you can see how the connector lines end.

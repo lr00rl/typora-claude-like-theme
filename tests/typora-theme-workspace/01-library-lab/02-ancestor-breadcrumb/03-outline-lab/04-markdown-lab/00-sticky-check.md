@@ -1,3 +1,3 @@
 # Sticky Check
 
-继续向下打开主测试文件，然后滚动左侧侧边栏，即可观察 active file 与 ancestor breadcrumb 的吸附表现。
+Open the showcase file below, then scroll the sidebar to watch the active file and the ancestor breadcrumb stick in place.

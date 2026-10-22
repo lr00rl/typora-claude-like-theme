@@ -1,14 +1,14 @@
-# 打开这个文件夹进行侧边栏测试
+# Open this folder to test the sidebars
 
-请在 Typora 中以 `tests/typora-theme-workspace` 作为根目录打开文件夹，而不是只双击单个文件。
+Open `tests/typora-theme-workspace` as a folder in Typora instead of double-clicking a single file.
 
-- 文件树连接线会出现在左侧 File Library。
-- 大纲连接线会出现在右侧 Outline。
-- 主测试文件位于最深层：`01-library-lab/02-ancestor-breadcrumb/03-outline-lab/04-markdown-lab/typora-theme-showcase.md`
+- File tree connector lines appear in the File Library on the left.
+- Outline connector lines appear in the Outline panel.
+- The main showcase file sits at the deepest level: `01-library-lab/02-ancestor-breadcrumb/03-outline-lab/04-markdown-lab/typora-theme-showcase.md`
 
-## 建议操作
+## Suggested steps
 
-1. 保持左侧文件树和右侧大纲同时打开。
-2. 打开深层主测试文件。
-3. 在侧边栏上下滚动，观察 tree hint line、sticky ancestor 和 sticky active file。
-4. 在正文中切换浅色与深色主题，并缩放窗口验证 sidenote 的响应式样式。
+1. Keep the file tree and the outline open.
+2. Open the deep showcase file.
+3. Scroll the sidebar up and down to check the tree hint lines, the sticky ancestors, and the sticky active file.
+4. Switch between the light and dark themes, and resize the window to check how sidenotes respond.

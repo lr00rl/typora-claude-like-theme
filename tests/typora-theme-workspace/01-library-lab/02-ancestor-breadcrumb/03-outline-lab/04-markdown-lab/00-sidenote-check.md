@@ -1,6 +1,6 @@
 # Sidenote Check
 
-主测试文件包含两种旁注写法：
+The showcase file uses two ways to write a sidenote:
 
-- 插件友好的 `<span class="sidenote">...</span>`
-- 完整 Tufte toggle 结构
+- the plugin-friendly `<span class="sidenote">...</span>`
+- the full Tufte toggle structure

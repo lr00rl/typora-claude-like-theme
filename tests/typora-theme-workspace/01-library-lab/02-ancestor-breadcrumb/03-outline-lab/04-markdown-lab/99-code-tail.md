@@ -1,3 +1,3 @@
 # Code Tail
 
-这一层尾部节点用于观察代码分支之后仍继续延伸的文件树竖线。
+A tail node at this level, so the vertical tree line keeps going after the code branch.
