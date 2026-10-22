@@ -2,7 +2,7 @@
 .DS_Store
 .worktrees/
 
-# agent 运行态，不是主题的一部分
+# Agent runtime state, not part of the theme
 .omc/
 .omx/
 .claude/

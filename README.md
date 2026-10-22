@@ -1,155 +1,170 @@
 # Claude-Like Theme
 
-[English README](README_en.md) · 孪生项目 [typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite)：负责安装和同步本主题，并提供主题所配合的旁注、写作宽度、代码块增强等编辑器能力，详见[与 typora-plugin-lite 配合](#与-typora-plugin-lite-配合)。
+[中文说明](README.zh.md) · Twin project [typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite): installs and syncs this theme, and provides the editor-side sidenotes, writing widths, file tree guides, and code fence features the theme is built to style. See [Working with typora-plugin-lite](#working-with-typora-plugin-lite).
 
-![Light Preview](image/light.png)
+![Light theme with the file tree](image/light.png)
 
-![Dark Preview](image/dark.png)
+![Dark theme with the file tree](image/dark.png)
 
-![Outline Preview](image/outline.png)
+A Typora theme modeled on a Claude-like reading experience: warm paper backgrounds, neutral structure, and a single accent color, tuned for long-form writing and technical notes in Chinese and English.
 
-一个以 Claude-like 阅读体验为灵感、针对中文写作与技术文档重新打磨的 Typora 主题。
+## Overview
 
-## 主题概览
+The goal is not a pixel copy of a web page. The theme brings a quiet, restrained reading atmosphere into Typora and then carries it through the parts of Typora people use every day: body text, tables, code blocks, the file tree, the outline, sidenotes, and exported HTML and PDF.
 
-这个主题不是简单复刻网页视觉，而是把更安静、克制、适合长时间阅读的文档气质带进 Typora，并继续围绕中文排版、代码块、表格、侧边栏和导出效果做针对性优化。
+The repository contains:
 
-当前仓库包含：
+- `claude-like.css`: the light theme (generated from `src/`; this is the file Typora loads)
+- `claude-like-dark.css`: the dark theme
+- `theme-pack.json`: the bootloader read by the `theme-pack` plugin in `typora-plugin-lite` (`typ` / `version` / `files`)
+- `src/`: the light and dark tokens plus the shared rules. Edit here, then run `node scripts/build.mjs`
+- `tests/`: the theme contract test and a Typora demo workspace for checking the sidebar, outline, Markdown, and sidenotes
 
-- `claude-like.css`：浅色主题（由 `src/` 生成，安装时复制这个文件）
-- `claude-like-dark.css`：深色主题
-- `theme-pack.json`：给 `typora-plugin-lite` 的 theme-pack 插件读的 bootloader（`typ` / `version` / `files`）
-- `src/`：浅色/深色 token 和共用规则。改主题改这里，然后运行 `node scripts/build.mjs`
-- `tests/typora-theme-workspace`：用于验证文件树、大纲、Markdown 和 sidenote 的演示工作区
+## Features
 
-## 最近能力整理
+- File tree hint lines: vertical stems, horizontal connectors, and a rounded corner on the last child
+- A sticky active file and sticky ancestor folders in the File Library, up to 10 nested levels
+- Connector lines in the Outline sidebar, with hover and active states
+- GitHub-style alerts (`[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]`), each with its own muted color
+- Code blocks with a language label, syntax colors, and line numbers drawn with CSS counters
+- An 860px writing column when no width plugin is installed, images that keep their aspect ratio, and softer styling for checked tasks
+- Tufte-style sidenotes, plus editor-side styling when used with the `sidenote` plugin from `typora-plugin-lite`
+- Light and dark variants assembled from one shared stylesheet, with body text held to at least 7:1 contrast and muted and accent text to at least 4.5:1 by the test suite
 
-结合当前 CSS 和最近的 `git log`，这套主题现在重点覆盖了这些能力：
+## Installation
 
-- 文件树 tree hint line，包含竖向 stem、横向连接线和最后一个节点的圆角收尾
-- File Library 中 active file 吸顶，以及 ancestor breadcrumb 逐层吸顶
-- sticky depth support 扩展到 10 层目录
-- Outline 侧边栏的树状提示线与 hover / active 高亮
-- 更宽的正文区域与图片比例保护
-- 任务列表已完成状态的弱化处理
-- Tufte 风格 sidenote，以及与 `typora-plugin-lite` 的 `sidenote` 插件联动的编辑器样式
+Install [typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite). The installer writes both CSS files into Typora's theme folder, so the Themes menu lists them on the first launch after install. It does not switch you off the theme you already use, and Typora's built-in themes such as GitHub and Newsprint stay available. The repo-root `theme-pack.json` is the bootloader the plugin reads.
 
-## 安装
+You can also copy the files by hand, or download them from [GitHub Releases](https://github.com/lr00rl/typora-claude-like-theme/releases):
 
-装 [typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite) 即可。安装脚本会把这两个 CSS 写进 Typora 的官方主题目录，第一次打开就能在「主题」菜单里选 Claude Like 或继续用 GitHub、Newsprint 等内置主题。仓库根目录的 `theme-pack.json` 是给插件认的 bootloader。也可以继续手动复制，或从 GitHub Releases 下载。
-
-1. 打开 Typora。
-2. 进入 `设置 / 偏好设置 -> 外观 -> 打开主题文件夹`。
-3. 将下列文件复制到主题目录：
+1. Open Typora.
+2. Go to `Preferences -> Appearance -> Open Theme Folder`.
+3. Copy these files into the theme folder:
    - `claude-like.css`
    - `claude-like-dark.css`
-4. 重启 Typora。
-5. 在主题菜单中选择：
-   - `Claude-like`
-   - `Claude-like Dark`
+4. Restart Typora.
+5. Pick one of these entries from the Themes menu:
+   - `Claude Like`
+   - `Claude Like Dark`
 
-> Windows 推荐将 `偏好设置 -> 外观 -> 窗口样式` 设为 `一体化`，重启后生效。当前主题在 Windows 一体化模式下更稳定。
+> On Windows, set `Preferences -> Appearance -> Window Style` to `Unibody` and restart Typora. The theme is more stable in that mode.
 
-## 与 typora-plugin-lite 配合
+## Working with typora-plugin-lite
 
-[typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite) 是和本主题一起维护的 Typora 插件系统。主题管视觉，插件管编辑器里的行为，两边通过 class 和 CSS 变量对接，互不修改对方的实现。
+[typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite) is the Typora plugin system maintained alongside this theme. The theme owns appearance and the plugins own editor behavior. They meet at class names and CSS variables, and neither changes the other's implementation.
 
-| 插件 | 和主题的关系 |
+| Plugin | Relationship to the theme |
 | --- | --- |
-| [`theme-pack`](https://github.com/lr00rl/typora-plugin-lite#theme-pack) | 安装时把两个 CSS 写进 Typora 主题目录，之后启动时按 `theme-pack.json` 从本仓库同步，不会替你切换当前主题 |
-| [`sidenote`](https://github.com/lr00rl/typora-plugin-lite/blob/main/plugins/sidenote/README.md) | 识别编辑器里的 `<span class="sidenote">` 并加上主题可用的 class，主题读取 `--tpl-sidenote-*` 变量排布右侧旁注 |
-| [`wider`](https://github.com/lr00rl/typora-plugin-lite/blob/main/plugins/wider/README.md) | 负责 `#write` 的 Default / Wide / Full 宽度；没装插件时主题退回 860px 正文宽度 |
-| [`fence-enhance`](https://github.com/lr00rl/typora-plugin-lite/tree/main/plugins/fence-enhance) | 代码块即时渲染和复制按钮，并写入 `--tpl-lineno-digits`，主题据此调整行号栏宽度 |
+| [`theme-pack`](https://github.com/lr00rl/typora-plugin-lite#theme-pack) | The installer writes both CSS files into Typora's theme folder, and on startup the plugin syncs them from this repo through `theme-pack.json`. It never switches your current theme. |
+| [`sidenote`](https://github.com/lr00rl/typora-plugin-lite/blob/main/plugins/sidenote/README.md) | Detects `<span class="sidenote">` in the editor and adds CSS-targetable classes. The theme lays out margin notes from the `--tpl-sidenote-*` variables. |
+| [`wider`](https://github.com/lr00rl/typora-plugin-lite/blob/main/plugins/wider/README.md) | Owns the Default / Wide / Full width of `#write`. Without the plugin the theme falls back to an 860px body. |
+| [`fence-enhance`](https://github.com/lr00rl/typora-plugin-lite/tree/main/plugins/fence-enhance) | Eager fence rendering and copy buttons, plus `--tpl-lineno-digits`, which the theme uses to size the line-number gutter to each block. Without the plugin the gutter reserves four digits. |
+| [`tree-guides`](https://github.com/lr00rl/typora-plugin-lite/tree/main/plugins/tree-guides) | Draws the file tree guides as one stroke per folder and lights the branch that holds the open file. While it runs, the theme's own CSS connectors step aside. |
 
-## 设计重点
+The plugins' own panels, such as the Plugin Center and Quick Open, read the theme's `--tpl-ui-*` tokens, so they take the theme's surfaces, text colors, accent, and fonts in both variants.
 
-- 中文正文优先：正文、标题、强调文本、代码分别使用不同字体策略
-- 长文阅读优先：低饱和、轻对比、较宽松留白，不抢正文注意力
-- 技术文档优先：表格、代码块、行内代码、数学公式与导出效果统一
-- 双主题同步维护：浅色和深色不是简单反色，而是分别调过对比度、边框强度和代码高亮
+The screenshots in this README were taken in Typora with typora-plugin-lite installed.
 
-## 视觉特性
+## Design priorities
 
-### 1. 文件树与大纲
+- A CJK serif body stack (Songti SC first) that keeps Chinese and mixed Chinese and English text steady, with separate font roles for headings, UI, and code
+- Calm long-form reading: low saturation, soft contrast, and generous spacing that stays out of the way of the text
+- Practical technical writing: tables, code blocks, inline code, math, and export output share one visual language
+- Light and dark maintained as separately tuned token sets, not simple inversions: contrast, border strength, and code colors are set for each
 
-- 左侧 File Library 有树状连接线
-- 当前活动文件有更明确的高亮与左侧强调条
-- 活动文件的祖先目录会在滚动时逐层吸顶
-- 右侧 Outline 也有对应的树状提示线和拐点处理
+## Visual highlights
 
-![Outline Preview](image/outline.png)
+### 1. File tree and outline
 
-### 2. 正文与 Markdown
+- Tree connector lines in the File Library
+- A clearer active-file highlight with a left accent bar
+- Ancestor folders of the active file stick to the top one by one as the tree scrolls
+- Matching connector lines and corners in the Outline sidebar
 
-- 中文正文和中英混排更稳
-- 标题层级更清楚
-- 引用块、分隔线、列表与任务列表保持统一气质
-- `TOC` 区块有独立容器样式
+![Outline sidebar with connector lines](image/outline.png)
 
-### 3. 表格与代码
+### 2. Body text and Markdown
 
-- 表格边框、行间距、数字对齐和 hover 状态已统一
-- 行内代码使用胶囊式弱强调
-- 代码块有独立背景、边框、语言标签和语法高亮
-- 如果在 Typora 中开启代码块行号，主题也会同步覆盖行号颜色
+- Steady rhythm for Chinese and mixed Chinese and English text
+- A clear heading hierarchy down to the sixth level
+- Consistent styling for blockquotes, alerts, horizontal rules, lists, and task lists
+- A dedicated container style for the `[TOC]` block
 
-### 4. Sidenote
+### 3. Tables and code
 
-主题内置了 Tufte 风格 sidenote 规则，适合做术语补充、注释和边栏说明。
+- Unified table borders, row spacing, numeric alignment, and row hover states
+- Inline code as a quiet capsule
+- Fenced code blocks with their own background, border, language label, and syntax highlighting
+- When line numbers are turned on in Typora, the theme draws them in its own colors and keeps them out of text selection
 
-最简单的写法：
+### 4. Sidenotes
+
+The theme ships Tufte-style sidenote rules for definitions, asides, and margin notes.
+
+Minimal usage:
 
 ```html
-这里是正文<span class="sidenote">这是一条旁注。</span>正文继续。
+Body text<span class="sidenote">This is a sidenote.</span> body continues.
 ```
 
-如果希望在 Typora 编辑器内也看到完整的 sidenote 编号和边栏效果，推荐配合 [typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite) 的 `sidenote` 插件。主题 CSS 负责视觉样式，插件负责把编辑器里的 inline HTML 标记转换为可供 CSS 识别的 class。
+For numbered sidenotes inside the Typora editor, use the `sidenote` plugin from [typora-plugin-lite](https://github.com/lr00rl/typora-plugin-lite). The plugin finds the inline HTML marker and adds the classes the theme styles. In the editor, the plugin moves notes into the margin only when the 860px writing column and a 300px margin both fit, and keeps them inline otherwise. In exported HTML and PDF, the theme floats notes into the right margin when the page is at least 1200px wide. Below that, plain sidenote spans stay inline, and notes written with the full Tufte toggle structure fold behind their number and open when it is clicked.
 
-宽屏示例：
+Wide window:
 
-![Sidenote Wide Preview](image/sidenote-example-wide.png)
+![Sidenotes in the right margin](image/sidenote-example-wide.png)
 
-窄屏示例：
+Narrow window:
 
-![Sidenote Narrow Preview](image/sidenote-example-narrow.png)
+![Sidenotes inline in a narrow window](image/sidenote-example-narrow.png)
 
-## 演示工作区
+## Demo workspace
 
-仓库内新增了一套专门给 Typora 使用的测试工作区：
+The repository includes a Typora workspace for checking the theme by hand:
 
-- 根目录：`tests/typora-theme-workspace`
-- 主测试文件：`tests/typora-theme-workspace/01-library-lab/02-ancestor-breadcrumb/03-outline-lab/04-markdown-lab/typora-theme-showcase.md`
+- Root folder: `tests/typora-theme-workspace`
+- Main showcase file: `tests/typora-theme-workspace/01-library-lab/02-ancestor-breadcrumb/03-outline-lab/04-markdown-lab/typora-theme-showcase.md`
 
-建议这样测试：
+Recommended steps:
 
-1. 在 Typora 中直接打开 `tests/typora-theme-workspace` 整个文件夹。
-2. 保持左侧 File Library 和右侧 Outline 同时打开。
-3. 打开最深层的 `typora-theme-showcase.md`。
-4. 滚动左侧文件树，检查 tree hint line、sticky ancestor breadcrumb、sticky active file。
-5. 在正文里检查标题层级、TOC、表格、代码块、代码行号、数学公式、图片、脚注和 sidenote。
-6. 在 `Claude-like` 与 `Claude-like Dark` 之间切换，并把窗口宽度切到 `>=1200px` 和 `<1200px` 两种状态对比旁注表现。
+1. Open the whole `tests/typora-theme-workspace` folder in Typora.
+2. Keep the File Library and the Outline visible.
+3. Open the deep `typora-theme-showcase.md` file.
+4. Scroll the file tree to check the tree hint lines, the sticky ancestor breadcrumb, and the sticky active file.
+5. In the document, check the heading hierarchy, TOC, alerts, tables, code blocks, code line numbers, math, images, footnotes, and sidenotes.
+6. Switch between `Claude Like` and `Claude Like Dark`, then resize the window to compare sidenotes in a wide and a narrow layout.
 
-## 适用场景
+## Building and testing
 
-- 长篇 Markdown 文档
-- AI 对话整理与二次编辑
-- 面向中文读者的技术笔记
-- 带有大量代码块和表格的说明文档
-- 需要导出 PDF 且希望版式稳定的内容
+The two published stylesheets are generated. Edit `src/tokens-light.css`, `src/tokens-dark.css`, or `src/shared.css`, then rebuild and run the tests:
 
-## 文件说明
+```bash
+node scripts/build.mjs
+node --test tests/theme-contract.test.mjs
+```
 
-- `src/tokens-light.css` / `src/tokens-dark.css`：浅色和深色的颜色 token
-- `src/shared.css`：两套主题共用的结构规则
-- `claude-like.css` / `claude-like-dark.css`：给 Typora 用的发布文件，由 `node scripts/build.mjs` 拼出来
-- `README.md`：中文说明
-- `README_en.md`：英文说明
-- `tests/typora-theme-workspace`：演示工作区
+The contract test checks the semantic and plugin tokens, the contrast floors, the shared structure of the light and dark files, and that the published CSS matches what `src/` assembles.
 
-## 总结
+Pushing a `v*` tag runs `.github/workflows/release-latest.yml`, which builds, tests, and publishes both CSS files and a zip to GitHub Releases. Release notes come from `releases/`; see [releases/README.md](releases/README.md) for the lookup order.
 
-如果你想要的不是“网页截图风”的 Typora 主题，而是一套更安静、可信、适合长期阅读与写作的中文 Markdown 主题，这个主题会更合适。它现在已经把文件树、大纲提示线、深层 sticky、代码块、表格和 sidenote 这些实际使用频率很高的部分一起收拢到了同一套视觉逻辑里。
+## Best use cases
 
-## 来源与许可
+- Long Markdown documents
+- Cleaning up and rewriting AI conversations
+- Technical notes in Chinese, English, or both
+- Documentation with many tables and fenced code blocks
+- Documents that need to export cleanly to PDF
 
-本主题最初 fork 自 [Muyiiiii/Typora_Claude-Like_Theme](https://github.com/Muyiiiii/Typora_Claude-Like_Theme)，之后在文件树、大纲、sidenote、构建流程和插件联动上做了大量重写，现在作为独立仓库维护。项目沿用 MIT 许可，原作者的版权声明保留在 [LICENSE](LICENSE) 中。
+## Files
+
+- `src/tokens-light.css` / `src/tokens-dark.css`: light and dark color tokens
+- `src/shared.css`: structural rules shared by both themes
+- `claude-like.css` / `claude-like-dark.css`: the Typora files, assembled by `node scripts/build.mjs`
+- `README.md`: English documentation
+- `README.zh.md`: Chinese documentation
+- `image/`: README screenshots (`image/zh/` holds the ones used by the Chinese README)
+- `tests/theme-contract.test.mjs`: the theme contract test
+- `tests/typora-theme-workspace`: the demo workspace
+
+## Origin and license
+
+This theme started as a fork of [Muyiiiii/Typora_Claude-Like_Theme](https://github.com/Muyiiiii/Typora_Claude-Like_Theme). After substantial rework of the file tree, outline, sidenotes, build pipeline, and plugin integration, it is now maintained as an independent repository. It stays under the MIT License, and the original author's copyright notice is kept in [LICENSE](LICENSE).
