@@ -7,131 +7,141 @@ tags:
   - showcase
 ---
 
-# Typora 主题综合测试页
+# Typora Theme Showcase
 
-这是一份尽可能覆盖 `Claude-like` 主题视觉特性的主测试文件。为了同时观察左侧文件树 tree hint line 与右侧大纲提示线，请在 Typora 中以 `tests/typora-theme-workspace` 作为根目录打开整个文件夹，再打开当前文件。
+This file exercises as much of the `Claude-like` theme as possible. To see the file tree hint lines on the left and the outline connector lines at the same time, open the whole `tests/typora-theme-workspace` folder in Typora, then open this file.
 
-- 左侧验证重点：tree hint line、sticky ancestor breadcrumb、sticky active file、active row 高亮
-- 右侧验证重点：Outline 连接线、不同层级标题的拐点、hover / active 状态
-- 正文验证重点：中英文排版、列表、表格、引用、代码块、行内代码、代码行号、数学公式、图片、TOC、sidenote
-- 建议补充操作：切换 `Claude-like` / `Claude-like Dark`，以及在宽屏和窄屏之间切换窗口宽度
+- Sidebar checks: tree hint lines, sticky ancestor breadcrumb, sticky active file, active row highlight
+- Outline checks: connector lines, corners at each heading level, hover and active states
+- Body checks: typography, lists, tables, quotes, code blocks, inline code, line numbers, math, images, TOC, sidenotes
+- Extra steps: switch between `Claude Like` and `Claude Like Dark`, and resize the window between wide and narrow
 
-> 如果要验证代码行号样式，请先在 Typora 的代码块设置中开启行号显示。
+> To check the line-number style, turn on line numbers for code blocks in Typora's preferences first.
 
 [TOC]
 
 ---
 
-## 1. 目录与标题层级
+## 1. Table of contents and heading levels
 
-这一节专门用来让右侧大纲有足够明显的层级变化，便于观察大纲提示线的竖线、L 型转角、首尾节点处理，以及当前条目的高亮表现。
+This section gives the outline enough depth to show its vertical stems, L-shaped corners, first and last nodes, and the highlight on the current item.
 
-### 1.1 三级标题
+### 1.1 Third-level heading
 
-正文里混排一点中文与 English text，用来观察 serif 正文字体、字重、数字和标点在连续阅读下的节奏是否稳定。
+A paragraph of running text lets you judge the serif body face, its weight, and how numbers like 1, 24, and 860 sit next to punctuation over a long read.
 
-#### 1.1.1 四级标题
+#### 1.1.1 Fourth-level heading
 
-再下一层标题用于触发更深的大纲节点。
+A deeper heading adds another level to the outline.
 
-##### 1.1.1.1 五级标题
+##### 1.1.1.1 Fifth-level heading
 
-这个层级主要用来确认小字号标题在当前主题里不会挤成一团。
+This level checks that small headings do not crowd together.
 
-###### 1.1.1.1.1 六级标题
+###### 1.1.1.1.1 Sixth-level heading
 
-六级标题通常最容易看起来像普通正文，这里可以检查弱层级标题的区分度。
+A sixth-level heading is the one most likely to look like body text, so this is where to check that weak levels stay distinct.
 
-### 1.2 同级分支
+### 1.2 Sibling branch
 
-右侧大纲不只需要一条深链，也需要兄弟分支，所以这里再放一组同级节点。
+The outline needs sibling branches as well as one deep chain, so here is a second group at the same level.
 
-#### 1.2.1 同级分支下的子节点
+#### 1.2.1 Child of the sibling branch
 
-大纲里应该能看到更自然的分叉结构，而不是只有单向缩进。
+The outline should show a natural fork here, not just a single run of indentation.
 
-#### 1.2.2 另一条子节点
+#### 1.2.2 Another child
 
-继续保留一段普通文本，观察 active item 在滚动过程中是否仍清晰。
-
----
-
-## 2. 正文与行内语法
-
-这一段用于观察正文的基础阅读气质：`inline code`、**粗体**、*斜体*、***粗斜体***、~~删除线~~、[外部链接](https://typora.io/)、以及中英混排中的 `functionName()`、`--accent-color`、`README_en.md`。
-
-你也可以顺便看一下以下行内元素：
-
-- HTML 上标：E = mc<sup>2</sup>
-- HTML 下标：H<sub>2</sub>O
-- 行内代码胶囊：`pnpm dev`
-- 混合数字：版本 `v1.1.1`、深度 `10`、色值 `#bc6a3a`
-
-### 2.1 无序列表
-
-- 一级列表项
-- 另一个一级列表项，里面带有 `inline code`
-  - 二级列表项
-  - 二级列表项，观察 marker 颜色
-- 最后一个一级列表项
-
-### 2.2 有序列表
-
-1. 第一步，观察编号与正文的距离。
-2. 第二步，看看嵌套列表是否仍然整齐。
-3. 第三步，确认中文段落在列表中不会拥挤。
-
-### 2.3 任务列表
-
-- [x] 已完成的任务，应该有更柔和的颜色和删除线
-- [x] 再来一项已完成任务，观察 checked state 是否统一
-- [ ] 未完成任务，观察 hover 时的 checkbox 放大效果
-- [ ] 最后一项未完成任务
+One more plain paragraph, so you can check that the active item stays clear while scrolling.
 
 ---
 
-## 3. 引用、分隔线与补充说明
+## 2. Body text and inline syntax
 
-> 这是一段一级引用，用来观察引用块的背景、左边框、圆角和正文颜色。
+This paragraph shows the basic reading texture: `inline code`, **bold**, *italic*, ***bold italic***, ~~strikethrough~~, an [external link](https://typora.io/), and identifiers in running text such as `functionName()`, `--accent-color`, and `README.zh.md`.
+
+The theme is also tuned for Chinese and mixed text, so here is one line of it: 这一行用来检查中文正文、标点和 English words 混排时的节奏。
+
+A few more inline elements:
+
+- HTML superscript: E = mc<sup>2</sup>
+- HTML subscript: H<sub>2</sub>O
+- Inline code capsule: `pnpm dev`
+- Mixed numbers: version `v1.2.2`, depth `10`, color `#a85d3b`
+
+### 2.1 Unordered list
+
+- A first-level item
+- Another first-level item, with `inline code`
+  - A second-level item
+  - A second-level item, to check the marker color
+- The last first-level item
+
+### 2.2 Ordered list
+
+1. Step one: check the gap between the number and the text.
+2. Step two: check that nested lists stay aligned.
+3. Step three: check that long paragraphs inside a list do not feel cramped.
+
+### 2.3 Task list
+
+- [x] A finished task, which should have a softer color and a strikethrough
+- [x] Another finished task, to check that the checked state is consistent
+- [ ] An open task, to check the checkbox hover effect
+- [ ] The last open task
+
+---
+
+## 3. Quotes, rules, and notes
+
+> This is a first-level quote, to check the quote background, left border, corner radius, and text color.
 >
-> > 这是一段嵌套引用，用来确认内层引用仍然保持可读，而不会塌成一片。
+> > This is a nested quote, to check that the inner quote stays readable instead of blending into the outer one.
 >
-> 最后一段文字用来测试多段 blockquote 的间距。
+> The last paragraph checks the spacing between paragraphs inside a quote.
 
-上面是引用块，下面是分隔线：
+GitHub-style alerts use the same container with a colored title:
+
+> [!NOTE]
+> A note carries neutral background information.
+
+> [!WARNING]
+> A warning flags something that can go wrong.
+
+A quote sits above and a horizontal rule follows:
 
 ---
 
-分隔线之后再接正文，确认上下留白过渡自然。
+Body text after the rule checks that the space above and below feels even.
 
 ---
 
-## 4. 表格系统
+## 4. Tables
 
-下表同时覆盖了对齐、数字、强调文本、混合中英文和 hover 行背景。
+This table covers alignment, numbers, emphasis, and the row hover background.
 
-| 项目 | Light | Dark | 备注 |
+| Area | Light | Dark | Notes |
 | :-- | :--: | --: | :-- |
-| 正文排版 | Calm | Calm | **中文正文**偏克制，适合长文 |
-| 文件树 | Yes | Yes | 含 tree hint line 与 active row 左侧强调条 |
-| 大纲提示线 | Yes | Yes | 多级标题越丰富越容易观察 |
-| 代码块 | 8px radius | 8px radius | 含语法高亮、语言标签、可选行号 |
-| Sidenote | Responsive | Responsive | 宽屏浮右，窄屏回流行内 |
+| Body text | Calm | Calm | **Restrained** body text for long reads |
+| File tree | Yes | Yes | Tree hint lines and an accent bar on the active row |
+| Outline lines | Yes | Yes | Easier to see with many heading levels |
+| Code blocks | 6px radius | 6px radius | Syntax colors, language label, optional line numbers |
+| Sidenotes | Responsive | Responsive | Float right on wide windows, inline on narrow ones |
 
-### 4.1 参数对照
+### 4.1 Token reference
 
 | Token | Value | Meaning |
 | :-- | --: | :-- |
-| `--accent-color` | `#bc6a3a` | 主题强调色 |
-| `--bg-color` | `#faf9f5` | 浅色正文背景 |
-| `--code-bg-color` | `#fcfcfa` | 代码块背景 |
-| `depth-support` | `10` | sticky depth support |
+| `--accent-color` | `#a85d3b` | Theme accent |
+| `--canvas-color` | `#faf9f6` | Light page background |
+| `--surface-color` | `#f2f1ee` | Code block and quote background |
+| `depth-support` | `10` | Sticky depth support |
 
 ---
 
-## 5. 代码块与代码行号
+## 5. Code blocks and line numbers
 
-下面几段代码用来覆盖关键词、字符串、数字、注释、标签、属性、变量名，以及代码块语言标签。
+These blocks cover keywords, strings, numbers, comments, tags, attributes, variable names, and the language label.
 
 ### 5.1 TypeScript
 
@@ -172,8 +182,8 @@ console.log(summarizeTheme("Claude-like"));
 
 ```css
 :root {
-  --accent-color: #bc6a3a;
-  --border-color: #ddd5ca;
+  --accent-color: #a85d3b;
+  --line-color: #ddd9d2;
 }
 
 .outline-item-active::before {
@@ -195,17 +205,17 @@ rg -n "sidenote|outline|file-tree" claude-like.css
 
 ---
 
-## 6. 数学公式
+## 6. Math
 
-行内公式示例：$f(x)=x^2 + 2x + 1$，用于观察正文中的 math baseline 是否自然。
+Inline math: $f(x)=x^2 + 2x + 1$, to check that the math baseline sits naturally in the text.
 
-块级公式示例：
+Block math:
 
 $$
 \int_0^1 x^2 \, dx = \frac{1}{3}
 $$
 
-再来一组常见的矩阵公式：
+A common matrix:
 
 $$
 A =
@@ -218,9 +228,9 @@ $$
 
 ---
 
-## 7. 图片与链接
+## 7. Images and links
 
-下面三张图分别用来确认浅色、深色与 sidenote 相关截图在当前主题中的尺寸、圆角与排版节奏是否稳定。
+These three images check the size, corner radius, and spacing of the light, dark, and sidenote screenshots inside the theme.
 
 ![Light Theme Preview](https://raw.githubusercontent.com/lr00rl/typora-claude-like-theme/main/image/light.png)
 
@@ -228,54 +238,54 @@ $$
 
 ![Sidenote Preview](https://raw.githubusercontent.com/lr00rl/typora-claude-like-theme/main/image/sidenote-example-wide.png)
 
-更多信息可以查看 [Typora 官方网站](https://typora.io/) 或仓库里的 `README.md` / `README_en.md`。
+See the [Typora website](https://typora.io/) or the repository's `README.md` and `README.zh.md` for more.
 
 ---
 
-## 8. 脚注
+## 8. Footnotes
 
-脚注适合观察正文和附注区域的默认 Typora 呈现是否与主题主体风格协调。这里先放两个引用点[^theme]，再放第二个[^plugin]。
+Footnotes show whether Typora's default footnote area fits the rest of the theme. Here is one reference[^theme], and here is a second one[^plugin].
 
-[^theme]: 当前主题同时维护浅色与深色版本，并对表格、代码块、侧边栏和旁注做了统一调校。
-[^plugin]: 如果希望在 Typora 编辑器中看到 sidenote 的完整行为，需要配合 `typora-plugin-lite` 的 `sidenote` 插件。
+[^theme]: The theme keeps a light and a dark variant, and tunes tables, code blocks, the sidebars, and sidenotes together.
+[^plugin]: To get the full sidenote behavior inside the Typora editor, install the `sidenote` plugin from `typora-plugin-lite`.
 
 ---
 
-## 9. Sidenote 样式
+## 9. Sidenotes
 
-这一节是主题特性验证的重点。建议你分别在宽屏和窄屏下观察。
+This section is the main sidenote check. Look at it in both a wide and a narrow window.
 
-### 9.1 插件友好的简写方式
+### 9.1 Plugin-friendly short form
 
-这里是一段正文<span class="sidenote">如果你安装了 `typora-plugin-lite` 的 `sidenote` 插件，这段旁注会在编辑器里被识别为可样式化的 sidenote；在导出 HTML / PDF 时，它也会按主题规则浮到右侧。</span>正文继续。
+This is a paragraph of body text<span class="sidenote">With the `sidenote` plugin from `typora-plugin-lite` installed, the editor turns this span into a styled sidenote. In a wide HTML export the theme floats it into the right margin.</span> and the text continues.
 
-### 9.2 完整 Tufte toggle 结构
+### 9.2 Full Tufte toggle structure
 
-这里是一段带完整 toggle 结构的正文<label for="sn-demo-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-demo-1" class="margin-toggle" /><span class="sidenote">这一条可以验证编号、桌面端右侧浮动，以及窄屏下的 toggle 行为。</span>继续正文。
+This paragraph uses the full toggle structure<label for="sn-demo-1" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-demo-1" class="margin-toggle" /><span class="sidenote">This note checks the numbering, the right-margin float on wide windows, and the toggle on narrow ones.</span> and then carries on.
 
-### 9.3 用代码块展示写法
+### 9.3 The markup in a code block
 
 ```html
-这里是正文<span class="sidenote">这是一个插件友好的旁注。</span>正文继续。
+Body text<span class="sidenote">A plugin-friendly sidenote.</span> continues here.
 
-这里是正文
+Body text
 <label for="sn-demo-2" class="margin-toggle sidenote-number"></label>
 <input type="checkbox" id="sn-demo-2" class="margin-toggle" />
-<span class="sidenote">这是完整的 Tufte sidenote 结构。</span>
-正文继续。
+<span class="sidenote">The full Tufte sidenote structure.</span>
+continues here.
 ```
 
 ---
 
-## 10. 最终检查清单
+## 10. Final checklist
 
-- [ ] 左侧文件树已显示 tree hint line
-- [ ] 左侧文件树滚动时出现 sticky ancestor breadcrumb
-- [ ] 当前活动文件在左侧保持 sticky active file
-- [ ] 右侧大纲已显示多级提示线和拐点
-- [ ] `TOC` 区块样式正常
-- [ ] 表格 hover、边框和数字对齐正常
-- [ ] 代码块语法高亮和语言标签正常
-- [ ] 如果开启了行号，代码编号颜色与边距正常
-- [ ] sidenote 在宽屏下浮到右侧，在窄屏下回流
-- [ ] 浅色与深色主题切换后没有明显断层
+- [ ] The file tree shows tree hint lines
+- [ ] Scrolling the file tree shows the sticky ancestor breadcrumb
+- [ ] The active file stays sticky in the file tree
+- [ ] The outline shows connector lines and corners at every level
+- [ ] The `TOC` block looks right
+- [ ] Table hover, borders, and number alignment look right
+- [ ] Code blocks show syntax colors and a language label
+- [ ] With line numbers on, the number color and spacing look right
+- [ ] Sidenotes float right on wide windows and flow inline on narrow ones
+- [ ] Switching between light and dark shows no visual break

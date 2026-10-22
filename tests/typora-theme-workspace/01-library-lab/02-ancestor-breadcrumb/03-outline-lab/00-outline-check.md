@@ -1,3 +1,3 @@
 # Outline Check
 
-这个分支会继续向下进入主测试文件，用来验证右侧大纲提示线和多级标题连接关系。
+This branch leads down to the showcase file and checks the outline connector lines across many heading levels.

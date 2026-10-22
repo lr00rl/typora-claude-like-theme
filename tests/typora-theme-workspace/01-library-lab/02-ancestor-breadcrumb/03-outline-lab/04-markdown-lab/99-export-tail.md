@@ -1,3 +1,3 @@
 # Export Tail
 
-这个文件让导出分支之后仍有收尾节点，方便观察中间节点连线。
+This file adds a closing node after the export branch, so the connector lines of the middle nodes are visible.

@@ -1,3 +1,3 @@
 # Outline Tail
 
-这个同级尾部节点让当前深入路径在文件树中表现为中间分支，而不是最后一支。
+This sibling tail node makes the deep path a middle branch in the file tree instead of the last one.

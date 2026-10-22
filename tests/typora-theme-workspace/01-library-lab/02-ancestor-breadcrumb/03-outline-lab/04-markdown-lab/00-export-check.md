@@ -1,3 +1,3 @@
 # Export Check
 
-这一级用于拉长深度，方便同时测试导出相关样式和文件树深层粘附逻辑。
+This file adds another sibling at this level, which helps when testing export styles and deep sticky rows together.

@@ -1,3 +1,3 @@
 # Sidebar Tail
 
-这个节点位于当前活跃分支之后，用来确认当前分支作为中间节点时，竖向提示线还能继续向下延伸。
+This node sits after the active branch, to confirm the vertical hint line keeps going when the active branch is a middle node.

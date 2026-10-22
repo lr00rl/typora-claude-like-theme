@@ -157,7 +157,7 @@ jobs:
           gh release upload "${TAG_NAME}" \
             claude-like.css \
             claude-like-dark.css \
-            Typora_Claude-Like_Theme.zip \
+            typora-claude-like-theme.zip \
             --clobber
 
       - name: Write job summary

@@ -1,3 +1,3 @@
 # Root Tail
 
-这个尾部节点让根目录同时出现中间分支和最后一个节点，方便观察树形连线的不同收尾。
+This tail node gives the root folder both a middle branch and a last node, so you can compare how the tree lines end.

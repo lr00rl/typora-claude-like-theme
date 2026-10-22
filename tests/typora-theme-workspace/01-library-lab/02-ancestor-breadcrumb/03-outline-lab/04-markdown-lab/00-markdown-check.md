@@ -1,3 +1,3 @@
 # Markdown Check
 
-这里作为同级占位节点，用来确保文件树中既有文件也有文件夹，连接线更容易看清。
+A placeholder sibling, so the tree mixes files and folders and the connector lines are easier to read.

@@ -1,3 +1,3 @@
 # Depth Tail
 
-当前层级的尾部节点用于确认 10 层深度路径依然能维持正确的树形连接。
+A tail node at this level, to confirm that a deep path still draws correct tree connectors.

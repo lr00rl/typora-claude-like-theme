@@ -1,3 +1,3 @@
 # Showcase Tail
 
-这个尾部节点用来确认主测试文件作为中间文件时，文件树最后一段提示线仍然正确。
+This tail node keeps the showcase file in the middle of its folder, to confirm the last stretch of tree line still draws correctly.
